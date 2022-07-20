@@ -1,0 +1,14 @@
+# kicad
+*.net
+*-bak
+*-cache.lib
+fp-info-cache
+_autosave-*
+
+# gerber files
+*.gbr
+*.drl
+*.gbrjob
+
+# BOM
+*.csv
