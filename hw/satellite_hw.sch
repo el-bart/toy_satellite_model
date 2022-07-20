@@ -1,4 +1,200 @@
-EESchema Schematic File Version 2
-EELAYER 25 0
+EESchema Schematic File Version 4
+EELAYER 30 0
 EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ap3015:AP3015 U?
+U 1 1 62D8DF96
+P 3250 3400
+F 0 "U?" H 3450 2700 50  0000 L CNN
+F 1 "AP3015" H 2850 2700 50  0000 L CNN
+F 2 "" H 3250 3400 50  0001 C CNN
+F 3 "" H 3250 3400 50  0001 C CNN
+	1    3250 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 62D8EFA5
+P 2200 3850
+F 0 "C?" H 2318 3896 50  0000 L CNN
+F 1 "4.7µF" H 2318 3805 50  0000 L CNN
+F 2 "" H 2238 3700 50  0001 C CNN
+F 3 "~" H 2200 3850 50  0001 C CNN
+	1    2200 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 62D8F6F4
+P 4250 3850
+F 0 "C?" H 4368 3896 50  0000 L CNN
+F 1 "1µF" H 4368 3805 50  0000 L CNN
+F 2 "" H 4288 3700 50  0001 C CNN
+F 3 "~" H 4250 3850 50  0001 C CNN
+	1    4250 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:L L?
+U 1 1 62D90536
+P 3250 3350
+F 0 "L?" V 3440 3350 50  0000 C CNN
+F 1 "L" V 3349 3350 50  0000 C CNN
+F 2 "" H 3250 3350 50  0001 C CNN
+F 3 "~" H 3250 3350 50  0001 C CNN
+	1    3250 3350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 62D912C0
+P 3850 3600
+F 0 "R?" H 3920 3646 50  0000 L CNN
+F 1 "2M" H 3920 3555 50  0000 L CNN
+F 2 "" V 3780 3600 50  0001 C CNN
+F 3 "~" H 3850 3600 50  0001 C CNN
+	1    3850 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 62D9157D
+P 3850 4100
+F 0 "R?" H 3920 4146 50  0000 L CNN
+F 1 "130k" H 3920 4055 50  0000 L CNN
+F 2 "" V 3780 4100 50  0001 C CNN
+F 3 "~" H 3850 4100 50  0001 C CNN
+	1    3850 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 62D92ADE
+P 4250 3350
+F 0 "#PWR?" H 4250 3200 50  0001 C CNN
+F 1 "+5V" H 4265 3523 50  0000 C CNN
+F 2 "" H 4250 3350 50  0001 C CNN
+F 3 "" H 4250 3350 50  0001 C CNN
+	1    4250 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR?
+U 1 1 62D93352
+P 3250 4100
+F 0 "#PWR?" H 3250 3850 50  0001 C CNN
+F 1 "GNDD" H 3254 3945 50  0000 C CNN
+F 2 "" H 3250 4100 50  0001 C CNN
+F 3 "" H 3250 4100 50  0001 C CNN
+	1    3250 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR?
+U 1 1 62D9B752
+P 2200 4000
+F 0 "#PWR?" H 2200 3750 50  0001 C CNN
+F 1 "GNDD" H 2204 3845 50  0000 C CNN
+F 2 "" H 2200 4000 50  0001 C CNN
+F 3 "" H 2200 4000 50  0001 C CNN
+	1    2200 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR?
+U 1 1 62D9BAAF
+P 3850 4250
+F 0 "#PWR?" H 3850 4000 50  0001 C CNN
+F 1 "GNDD" H 3854 4095 50  0000 C CNN
+F 2 "" H 3850 4250 50  0001 C CNN
+F 3 "" H 3850 4250 50  0001 C CNN
+	1    3850 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR?
+U 1 1 62D9BD92
+P 4250 4000
+F 0 "#PWR?" H 4250 3750 50  0001 C CNN
+F 1 "GNDD" H 4254 3845 50  0000 C CNN
+F 2 "" H 4250 4000 50  0001 C CNN
+F 3 "" H 4250 4000 50  0001 C CNN
+	1    4250 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 62D9DDD9
+P 2200 3350
+F 0 "#PWR?" H 2200 3200 50  0001 C CNN
+F 1 "VCC" H 2215 3523 50  0000 C CNN
+F 2 "" H 2200 3350 50  0001 C CNN
+F 3 "" H 2200 3350 50  0001 C CNN
+	1    2200 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 3350 2650 3350
+Wire Wire Line
+	3050 3500 3050 3350
+Connection ~ 3050 3350
+Wire Wire Line
+	3050 3350 3100 3350
+Wire Wire Line
+	2200 3700 2200 3350
+Connection ~ 2200 3350
+Wire Wire Line
+	2800 3850 2650 3850
+Wire Wire Line
+	2650 3850 2650 3350
+Connection ~ 2650 3350
+Wire Wire Line
+	2650 3350 3050 3350
+$Comp
+L Device:D_Schottky D?
+U 1 1 62DA0FC6
+P 3650 3350
+F 0 "D?" H 3650 3133 50  0000 C CNN
+F 1 "D_Schottky" H 3650 3224 50  0000 C CNN
+F 2 "" H 3650 3350 50  0001 C CNN
+F 3 "~" H 3650 3350 50  0001 C CNN
+	1    3650 3350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3400 3350 3450 3350
+Wire Wire Line
+	3450 3500 3450 3350
+Connection ~ 3450 3350
+Wire Wire Line
+	3450 3350 3500 3350
+Wire Wire Line
+	3800 3350 3850 3350
+Wire Wire Line
+	4250 3350 4250 3700
+Wire Wire Line
+	3850 3450 3850 3350
+Connection ~ 3850 3350
+Wire Wire Line
+	3850 3350 4250 3350
+Wire Wire Line
+	3850 3950 3850 3850
+Wire Wire Line
+	3700 3850 3850 3850
+Connection ~ 3850 3850
+Wire Wire Line
+	3850 3850 3850 3750
+Connection ~ 4250 3350
 $EndSCHEMATC
