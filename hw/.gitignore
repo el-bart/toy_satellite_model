@@ -4,6 +4,7 @@
 *-cache.lib
 fp-info-cache
 _autosave-*
+*.bck
 
 # gerber files
 *.gbr
