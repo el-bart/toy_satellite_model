@@ -308,7 +308,7 @@ U 1 1 62DB2810
 P 6600 3100
 F 0 "D2" V 6639 2982 50  0000 R CNN
 F 1 "red" V 6548 2982 50  0000 R CNN
-F 2 "Diode_THT:D_5W_P5.08mm_Vertical_AnodeUp" H 6600 3100 50  0001 C CNN
+F 2 "LED_THT:LED_D5.0mm-3" H 6600 3100 50  0001 C CNN
 F 3 "~" H 6600 3100 50  0001 C CNN
 	1    6600 3100
 	0    -1   -1   0   
@@ -352,10 +352,6 @@ Wire Wire Line
 	6150 3450 6150 3350
 Wire Wire Line
 	6150 3450 5900 3450
-Wire Wire Line
-	5900 3450 5900 3350
-Wire Wire Line
-	5900 3350 5600 3350
 Connection ~ 6150 3450
 $Comp
 L Device:C C6
@@ -462,4 +458,100 @@ F 3 "https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF" H 6500 3450 50  0001 
 	1    6500 3450
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J1
+U 1 1 62D9FBC0
+P 1400 2750
+F 0 "J1" H 1318 2425 50  0000 C CNN
+F 1 "solar 1" H 1318 2516 50  0000 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 2750 50  0001 C CNN
+F 3 "~" H 1400 2750 50  0001 C CNN
+	1    1400 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J2
+U 1 1 62DA1D95
+P 1400 3200
+F 0 "J2" H 1318 2875 50  0000 C CNN
+F 1 "solar 2" H 1318 2966 50  0000 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 3200 50  0001 C CNN
+F 3 "~" H 1400 3200 50  0001 C CNN
+	1    1400 3200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J3
+U 1 1 62DA25E5
+P 1400 3650
+F 0 "J3" H 1318 3325 50  0000 C CNN
+F 1 "solar 3" H 1318 3416 50  0000 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 3650 50  0001 C CNN
+F 3 "~" H 1400 3650 50  0001 C CNN
+	1    1400 3650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J4
+U 1 1 62DA2DD3
+P 1400 4100
+F 0 "J4" H 1318 3775 50  0000 C CNN
+F 1 "solar 4" H 1318 3866 50  0000 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 4100 50  0001 C CNN
+F 3 "~" H 1400 4100 50  0001 C CNN
+	1    1400 4100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1600 2750 1800 2750
+Wire Wire Line
+	1800 2750 1800 3100
+Wire Wire Line
+	1800 3100 1600 3100
+Wire Wire Line
+	1600 3200 1800 3200
+Wire Wire Line
+	1800 3200 1800 3550
+Wire Wire Line
+	1800 3550 1600 3550
+Wire Wire Line
+	1600 3650 1800 3650
+Wire Wire Line
+	1800 3650 1800 4000
+Wire Wire Line
+	1800 4000 1600 4000
+$Comp
+L power:GNDD #PWR0118
+U 1 1 62DAC97E
+P 1800 4150
+F 0 "#PWR0118" H 1800 3900 50  0001 C CNN
+F 1 "GNDD" H 1804 3995 50  0000 C CNN
+F 2 "" H 1800 4150 50  0001 C CNN
+F 3 "" H 1800 4150 50  0001 C CNN
+	1    1800 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0119
+U 1 1 62DADE62
+P 1800 2350
+F 0 "#PWR0119" H 1800 2200 50  0001 C CNN
+F 1 "VCC" H 1815 2523 50  0000 C CNN
+F 2 "" H 1800 2350 50  0001 C CNN
+F 3 "" H 1800 2350 50  0001 C CNN
+	1    1800 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 4100 1800 4100
+Wire Wire Line
+	1800 4100 1800 4150
+Wire Wire Line
+	1800 2350 1800 2650
+Wire Wire Line
+	1800 2650 1600 2650
+Wire Wire Line
+	5600 3050 5900 3050
+Wire Wire Line
+	5900 3050 5900 3450
 $EndSCHEMATC
