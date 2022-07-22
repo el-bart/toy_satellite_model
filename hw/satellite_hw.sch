@@ -464,7 +464,7 @@ U 1 1 62D9FBC0
 P 1400 2750
 F 0 "J1" H 1318 2425 50  0000 C CNN
 F 1 "solar 1" H 1318 2516 50  0000 C CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 2750 50  0001 C CNN
+F 2 "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical" H 1400 2750 50  0001 C CNN
 F 3 "~" H 1400 2750 50  0001 C CNN
 	1    1400 2750
 	-1   0    0    1   
@@ -475,7 +475,7 @@ U 1 1 62DA1D95
 P 1400 3200
 F 0 "J2" H 1318 2875 50  0000 C CNN
 F 1 "solar 2" H 1318 2966 50  0000 C CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 3200 50  0001 C CNN
+F 2 "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical" H 1400 3200 50  0001 C CNN
 F 3 "~" H 1400 3200 50  0001 C CNN
 	1    1400 3200
 	-1   0    0    1   
@@ -486,7 +486,7 @@ U 1 1 62DA25E5
 P 1400 3650
 F 0 "J3" H 1318 3325 50  0000 C CNN
 F 1 "solar 3" H 1318 3416 50  0000 C CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 3650 50  0001 C CNN
+F 2 "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical" H 1400 3650 50  0001 C CNN
 F 3 "~" H 1400 3650 50  0001 C CNN
 	1    1400 3650
 	-1   0    0    1   
@@ -497,7 +497,7 @@ U 1 1 62DA2DD3
 P 1400 4100
 F 0 "J4" H 1318 3775 50  0000 C CNN
 F 1 "solar 4" H 1318 3866 50  0000 C CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1400 4100 50  0001 C CNN
+F 2 "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical" H 1400 4100 50  0001 C CNN
 F 3 "~" H 1400 4100 50  0001 C CNN
 	1    1400 4100
 	-1   0    0    1   
