@@ -1,0 +1,4 @@
+#!/bin/bash
+set -eu -o pipefail
+kicad2step -o pcb.step ../hw/satellite_hw.kicad_pcb
+./step2stl pcb.step pcb.stl
