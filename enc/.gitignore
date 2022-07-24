@@ -1,1 +1,5 @@
 build/*
+
+# kicad model of PCB
+pcb.step
+pcb.stl
