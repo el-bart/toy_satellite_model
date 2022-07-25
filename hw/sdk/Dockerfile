@@ -6,3 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     freecad
 RUN apt-get update && apt-get install -y --no-install-recommends \
     make
+COPY \
+  gen_model_preview \
+  step2stl \
+  /usr/local/bin/
