@@ -16,12 +16,13 @@ all: gerber stl
 
 
 .PHONY: gerber
-gerber: $(GERBER_DIR)/version.txt
+gerber: $(GERBER_DIR).tar.gz
 
-$(GERBER_DIR)/version.txt: $(PCB) /usr/local/bin/generate_gerber Makefile
-	$(SILENT)mkdir -p "$(dir $@)"
-	$(SILENT)generate_gerber "$<" "$(dir $@)"
-	$(SILENT)md5sum "$<" > "$@"
+$(GERBER_DIR).tar.gz: $(PCB) /usr/local/bin/generate_gerber Makefile
+	$(SILENT)mkdir -p "$(GERBER_DIR)"
+	$(SILENT)generate_gerber "$<" "$(GERBER_DIR)"
+	$(SILENT)md5sum "$<" > "$(GERBER_DIR)/version.txt"
+	$(SILENT)tar czf "$@" $<
 
 
 .PHONY: stl
