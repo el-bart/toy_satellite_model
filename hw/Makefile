@@ -7,7 +7,8 @@ SILENT:=@
 endif
 
 PCB:=$(wildcard *.kicad_pcb) # expected to be 1 file
-OUT_DIR:=build/gerber
+OUT_DIR:=build
+GERBER_DIR:=$(OUT_DIR)/gerber
 
 
 .PHONY: all
@@ -15,12 +16,12 @@ all: gerber stl
 
 
 .PHONY: gerber
-gerber: $(OUT_DIR)/version.txt
+gerber: $(GERBER_DIR)/version.txt
 
-$(OUT_DIR)/version.txt: $(PCB) | Makefile
+$(GERBER_DIR)/version.txt: $(PCB) /usr/local/bin/generate_gerber Makefile
 	$(SILENT)mkdir -p "$(dir $@)"
 	$(SILENT)generate_gerber "$<" "$(dir $@)"
-	$(SILENT)md5sum "$<" | awk '{ print $$1 }' > "$@"
+	$(SILENT)md5sum "$<" > "$@"
 
 
 .PHONY: stl
