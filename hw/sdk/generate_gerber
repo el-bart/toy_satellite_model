@@ -35,10 +35,6 @@ extensions = {
     "F_SilkS":   "gto",
 }
 
-# TODO drill files!
-#    "NPTH": "NPTH.drl",
-#    "PTH": "PTH.drl",
-
 for i, layer_id in enumerate(layer_ids):
     layer_name = board.GetLayerName(layer_id).replace(".", "_")
     if layer_name not in extensions:
