@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+import os
+import sys
+import pcbnew as pn
+from pathlib import Path
+
+board_name = sys.argv[1]
+out_dir = sys.argv[2]
+
+Path(out_dir).mkdir(parents=True, exist_ok=True)
+
+project = board_name.split('.')[0]
+board = pn.LoadBoard(board_name)
+pctl = pn.PLOT_CONTROLLER(board)
+enabled_layers = board.GetEnabledLayers()
+
+layer_ids = list(enabled_layers.Seq())
+
+layer_names = []
+for layer_id in layer_ids:
+    layer_names.append(board.GetLayerName(layer_id))
+max_string_len = max(layer_names, key=len)
+
+extensions = {
+    "B_Cu":      "gbl",
+    "B_Mask":    "gbs",
+    "B_Paste":   "gbp",
+    "B_SilkS":   "gbo",
+    "Edge_Cuts": "gm1",
+    "F_Cu":      "gtl",
+    "F_Mask":    "gts",
+    "F_Paste":   "gtp",
+    "F_SilkS":   "gto",
+}
+
+# TODO drill files!
+#    "NPTH": "NPTH.drl",
+#    "PTH": "PTH.drl",
+
+for i, layer_id in enumerate(layer_ids):
+    layer_name = board.GetLayerName(layer_id).replace(".", "_")
+    if layer_name not in extensions:
+        continue
+    pctl.SetLayer(layer_id)
+    pctl.OpenPlotfile("GEN-TMP", pn.PLOT_FORMAT_GERBER, layer_name)
+    pctl.PlotLayer()
+    out_file = os.path.join(out_dir, project + "-" + layer_name + "." + extensions[layer_name])
+    tmp = project + "-GEN-TMP.gbr"
+    os.rename(tmp, out_file)
