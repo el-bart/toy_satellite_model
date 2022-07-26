@@ -19,6 +19,7 @@ all: gerber stl
 gerber: $(GERBER_DIR).tar.gz
 
 $(GERBER_DIR).tar.gz: $(PCB) /usr/local/bin/generate_gerber Makefile
+	$(SILENT)echo "GERBER $<"
 	$(SILENT)mkdir -p "$(GERBER_DIR)"
 	$(SILENT)generate_gerber "$<" "$(GERBER_DIR)"
 	$(SILENT)md5sum "$<" > "$(GERBER_DIR)/version.txt"
