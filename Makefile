@@ -12,7 +12,11 @@ all: sw hw enc
 sw hw enc: Makefile
 	$(SILENT)cd "$@" && ./make "-j$$(nproc)"
 
-enc: hw
+enc: enc/build/pcb.stl
+enc/build/pcb.stl: hw/build/pcb.stl
+	$(SILENT)echo "COPY $<"
+	$(SILENT)mkdir -p "$(dir $@)"
+	$(SILENT)cp "$<" "$@"
 
 .PHONY: clean
 clean:
