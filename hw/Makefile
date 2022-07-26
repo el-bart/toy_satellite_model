@@ -27,8 +27,12 @@ $(GERBER_DIR).tar.gz: $(PCB) /usr/local/bin/generate_gerber Makefile
 
 
 .PHONY: stl
-stl:
-	mkdir -p build
+stl: $(OUT_DIR)/pcb.stl
+
+$(OUT_DIR)/pcb.stl: $(PCB) /usr/local/bin/generate_stl /usr/local/bin/step2stl Makefile
+	$(SILENT)echo "STL $<"
+	$(SILENT)mkdir -p "$(OUT_DIR)"
+	$(SILENT)generate_stl "$<" "$@"
 
 
 .PHONY: clean
