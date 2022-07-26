@@ -13,3 +13,5 @@ _autosave-*
 
 # BOM
 *.csv
+
+build/*
