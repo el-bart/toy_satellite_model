@@ -1,4 +1,15 @@
 #!/bin/bash
 set -eu -o pipefail
-kicad2step -o pcb.step ../hw/satellite_hw.kicad_pcb
-./step2stl pcb.step pcb.stl
+
+if [ $# -ne 2 ]
+then
+  echo "$0 <my/board.kicad_pcb> </output/file.stl>" >&2
+fi
+
+pcb=$1
+stl=$2
+shift 2
+step="${stl%.stl}.step"
+
+kicad2step --force -o "$step" "$pcb"
+step2stl "$step" "$stl"
