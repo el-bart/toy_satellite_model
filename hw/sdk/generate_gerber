@@ -2,12 +2,9 @@
 import os
 import sys
 import pcbnew as pn
-from pathlib import Path
 
 board_name = sys.argv[1]
 out_dir = sys.argv[2]
-
-Path(out_dir).mkdir(parents=True, exist_ok=True)
 
 project = board_name.split('.')[0]
 board = pn.LoadBoard(board_name)
