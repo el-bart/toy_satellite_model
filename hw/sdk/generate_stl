@@ -13,4 +13,11 @@ shift 2
 step="${stl%.stl}.step"
 
 kicad2step --force -o "$step" "$pcb"
-step2stl "$step" "$stl"
+
+if ! getent passwd "$UID" > /dev/null
+then
+  wrapper="fakeroot"
+else
+  wrapper=""
+fi
+$wrapper step2stl "$step" "$stl"

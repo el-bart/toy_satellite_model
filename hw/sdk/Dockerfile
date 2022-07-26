@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     freecad
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    fakeroot \
     make
 
 COPY \
