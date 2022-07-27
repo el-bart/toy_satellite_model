@@ -48,7 +48,13 @@ module pv_panel_mount()
         cube([3, pv_size[1]+pv_cable_space, 1+5]);
       // cables slot
       translate([pv_wall_side+pv_spacing, pv_size[1]+3, pv_pos_h-1])
-        cube([pv_size[0]/2 - pv_wall_side, 3, 1+5]);
+      {
+        d=3;
+        cube([pv_size[0]/2 - pv_wall_side, d, 1+5]);
+        r=d/2;
+        translate([r, r, -3])
+        cylinder(r=r, h=5, $fn=20);
+      }
     }
     translate([1, 1, pv_pos_h] + pv_spacing*[1,1,0])
       %pv_panel_mock();
