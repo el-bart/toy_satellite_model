@@ -17,10 +17,10 @@ export CXX:=avr-g++
 export OBJCOPY:=avr-objcopy
 export LD :=$(CC)
 # tools settings (see http://www.engbedded.com/fusecalc) - empty means do not program fuse bits
-#export LFUSE:=
-#export HFUSE:=
-export LFUSE:=0x6B
-export HFUSE:=0xFB
+export LFUSE:=
+export HFUSE:=
+#export LFUSE:=0x6B
+#export HFUSE:=0xFB
 # type of MCU for the avrdude programmer
 export MCU_PROG_TYPE:=attiny13
 # mype of MCU for the compiler
