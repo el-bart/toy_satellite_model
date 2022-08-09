@@ -11,7 +11,7 @@ struct Core
   Core() { led_.off(); }
 
   template<char ...Text>
-  void run()
+  inline void run()
   {
     while(true)
       send_text<Text..., '\0'>();
@@ -22,33 +22,13 @@ private:
   inline void send_text()
   {
     wdg_.reset();
-    send_char(Head);
+    send_char<Head>();
     inter_letter_pause();
     send_text<Tail...>();
   }
 
-  void send_char(char c)
-  {
-    if(c == 's')
-    {
-      dot();
-      dot();
-      dot();
-      return;
-    }
-    if(c == 'o')
-    {
-      dash();
-      dash();
-      dash();
-      return;
-    }
-    if(c == ' ')
-    {
-      inter_word_pause();
-      return;
-    }
-  }
+  template<char c>
+  void send_char();
 
   void dash()
   {
@@ -98,6 +78,9 @@ private:
 };
 
 
+template<> void Core::send_char<'s'>() { dot();  dot();  dot();  }
+template<> void Core::send_char<'o'>() { dash(); dash(); dash(); }
+template<> void Core::send_char<' '>() { inter_word_pause(); }
 
 template<>
 void Core::send_text<'\0'>()
