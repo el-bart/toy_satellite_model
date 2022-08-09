@@ -20,29 +20,58 @@ private:
   void loop_once()
   {
     wdg_.reset();
-
-    led_.on();
-    wait100ms(5);
-
-    led_.off();
-    wait100ms(5);
+    send('s');
+    send('o');
+    send('s');
+    inter_word_pause();
   }
 
-  void wait100ms(unsigned n=1)
+  void send(char c)
   {
-    for(auto i=0u; i<n; ++i)
+    if(c == 's')
     {
-      wdg_.reset();
-      _delay_ms(100);
+      dot();
+      dot();
+      dot();
+      inter_letter_pause();
+      return;
+    }
+    if(c == 'o')
+    {
+      dash();
+      dash();
+      dash();
+      inter_letter_pause();
+      return;
     }
   }
 
   void dash()
   {
+    wdg_.reset();
+    led_.on();
+    wait_units(3);
+    led_.off();
+    inter_unit_pause();
   }
 
   void dot()
   {
+    wdg_.reset();
+    led_.on();
+    wait_units(1);
+    led_.off();
+    inter_unit_pause();
+  }
+
+  void inter_unit_pause()   { wait_units(1); wdg_.reset(); }
+  void inter_letter_pause() { wait_units(3); wdg_.reset(); }
+  void inter_word_pause()   { wait_units(7); wdg_.reset(); }
+
+  void wait_units(unsigned n)
+  {
+    for(auto i=0u; i<n; ++i)
+      _delay_ms(50);
   }
 
   Watchdog wdg_;
