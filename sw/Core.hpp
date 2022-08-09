@@ -56,9 +56,9 @@ private:
     }
   }
 
-  inline void inter_unit_pause()   { wait_units(1); wdg_.reset(); }
-  inline void inter_letter_pause() { wait_units(3); wdg_.reset(); }
-  inline void inter_word_pause()   { wait_units(7); wdg_.reset(); }
+  void inter_unit_pause()   { wait_units(1); wdg_.reset(); }
+  void inter_letter_pause() { wait_units(3); wdg_.reset(); }
+  void inter_word_pause()   { wait_units(7); wdg_.reset(); }
 
   inline void end_of_text_pause()
   {
