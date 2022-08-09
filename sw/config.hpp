@@ -8,7 +8,7 @@ constexpr uint32_t fcpu = (128u*kHz)/8u;
 #define F_CPU fcpu
 
 // controls if full morse code table shall be compiled in.
-#if 1
+#if 0
   // uses ~350B of ROM, but printing each new character is just 6B.
   // preferred for longer texts.
   #define INLINE_MORSE_TABLE
