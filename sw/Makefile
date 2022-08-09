@@ -121,9 +121,9 @@ flash_mcu:
 	@[ -n "$(PROFILE)" ] || { echo "profile MUST be set" ; exit 1 ; }
 	@[ -f "$(GENDIR)/$(PROFILE)/$(BIN_FILE)" ] || { echo "file to flash must exist" ; exit 2 ; }
 	# flash program
-	avrdude -P avrdoper -c usbasp -p "$(MCU_PROG_TYPE)" -U "flash:w:$(GENDIR)/$(PROFILE)/$(BIN_FILE)"
+	avrdude -P avrdoper -c usbasp -B 1kHz -p "$(MCU_PROG_TYPE)" -U "flash:w:$(GENDIR)/$(PROFILE)/$(BIN_FILE)"
 	# setup fuse bits
-	[ -z "$(LFUSE)$(HFUSE)" ] || avrdude -P avrdoper -c usbasp -p "$(MCU_PROG_TYPE)" -U "lfuse:w:$(LFUSE):m" -U "hfuse:w:$(HFUSE):m"
+	[ -z "$(LFUSE)$(HFUSE)" ] || avrdude -P avrdoper -c usbasp -p "$(MCU_PROG_TYPE)" -B 1kHz -U "lfuse:w:$(LFUSE):m" -U "hfuse:w:$(HFUSE):m"
 endif
 
 .PHONY: clean
