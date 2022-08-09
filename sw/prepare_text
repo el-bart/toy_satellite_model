@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "$@" | sed "s/\(.\)/'\1',/g" | sed 's/,$//'
+cat <<EOF
+c.run< $(echo "$@" | sed "s/\(.\)/'\1',/g" | sed 's/,$//') >();
+EOF
