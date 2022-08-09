@@ -20,13 +20,26 @@ private:
   void loop_once()
   {
     wdg_.reset();
-    send('s');
-    send('o');
-    send('s');
-    inter_word_pause();
+    send_text('s', 'o', 's');
   }
 
-  void send(char c)
+  template<typename ...Tail>
+  void send_text(char head, Tail ...tail)
+  {
+    send_char(head);
+    send_text(tail...);
+  }
+
+  void send_text()
+  {
+    for(auto i=0; i<3; ++i)
+    {
+      wdg_.reset();
+      inter_word_pause();
+    }
+  }
+
+  void send_char(char c)
   {
     if(c == 's')
     {
@@ -52,6 +65,7 @@ private:
     led_.on();
     wait_units(3);
     led_.off();
+    wdg_.reset();
     inter_unit_pause();
   }
 
@@ -61,6 +75,7 @@ private:
     led_.on();
     wait_units(1);
     led_.off();
+    wdg_.reset();
     inter_unit_pause();
   }
 
