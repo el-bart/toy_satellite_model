@@ -3,5 +3,5 @@
 int main(void)
 {
   Core c;
-  c.run();
+  c.run<'s', 'o', 's'>();
 }

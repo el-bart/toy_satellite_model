@@ -10,33 +10,21 @@ struct Core
 {
   Core() { led_.off(); }
 
+  template<char ...Text>
   void run()
   {
     while(true)
-      loop_once();
+      send_text<Text..., '\0'>();
   }
 
 private:
-  void loop_once()
+  template<char Head, char ...Tail>
+  inline void send_text()
   {
     wdg_.reset();
-    send_text('s', 'o', 's');
-  }
-
-  template<typename ...Tail>
-  void send_text(char head, Tail ...tail)
-  {
-    send_char(head);
-    send_text(tail...);
-  }
-
-  void send_text()
-  {
-    for(auto i=0; i<3; ++i)
-    {
-      wdg_.reset();
-      inter_word_pause();
-    }
+    send_char(Head);
+    inter_letter_pause();
+    send_text<Tail...>();
   }
 
   void send_char(char c)
@@ -46,7 +34,6 @@ private:
       dot();
       dot();
       dot();
-      inter_letter_pause();
       return;
     }
     if(c == 'o')
@@ -54,7 +41,11 @@ private:
       dash();
       dash();
       dash();
-      inter_letter_pause();
+      return;
+    }
+    if(c == ' ')
+    {
+      inter_word_pause();
       return;
     }
   }
@@ -83,12 +74,33 @@ private:
   void inter_letter_pause() { wait_units(3); wdg_.reset(); }
   void inter_word_pause()   { wait_units(7); wdg_.reset(); }
 
+  void end_of_text_pause()
+  {
+    for(auto i=0; i<3; ++i)
+    {
+      wdg_.reset();
+      inter_word_pause();
+    }
+  }
+
   void wait_units(unsigned n)
   {
     for(auto i=0u; i<n; ++i)
-      _delay_ms(50);
+    {
+      wdg_.reset();
+      _delay_ms(100);   // wikipedia suggest 50ms, but it looks too fast on LED
+      wdg_.reset();
+    }
   }
 
   Watchdog wdg_;
   Led led_;
 };
+
+
+
+template<>
+void Core::send_text<'\0'>()
+{
+  end_of_text_pause();
+}
