@@ -87,8 +87,8 @@ debug:
 	@$(run-in-gen)
 
 .PHONY: release
-release: CFLAGS+=-O3 -DNDEBUG -Werror
-release: CXXFLAGS+=-O3 -DNDEBUG -Werror
+release: CFLAGS+=-Os -DNDEBUG -Werror
+release: CXXFLAGS+=-Os -DNDEBUG -Werror
 release: TARGET:=all
 release:
 	@$(run-in-gen)
