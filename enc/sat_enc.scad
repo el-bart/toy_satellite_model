@@ -157,7 +157,7 @@ module main_block()
                   cube(magnet_slot_size);
   }
 
-  %translate([13, -20/2, 3*main_wall+4])
+  %translate([13, -20/2+2, 3*main_wall+4])
     pcb_mock();
 }
 
