@@ -1,6 +1,5 @@
 //
 // TODOs:
-// - add holes for PVs' cables
 // - add bottom mount for Araine 5 model
 //
 include <detail/config.scad>
@@ -61,7 +60,7 @@ module main_block()
         }
     }
     translate([0, 0, main_block_size[2]/2])
-      translate(main_wall*[0,0,3])
+      translate((main_wall+magnet_slot_size[2]+1)*[0,0,1])
         cube(main_block_size - 2*main_wall*[1,1,0], center=true);
     // magnet holes
     mag_offset = main_block_size[0]/2;
@@ -73,6 +72,13 @@ module main_block()
               rotate([0, 0, (1-dx)*90])
                 translate(-magnet_slot_size[0]/2 *[1,2,0])
                   cube(magnet_slot_size);
+    // cable holes
+    for(dr=[0:3])
+      rotate(dr*[0,0,90])
+        translate([main_block_size[0]/2, -main_block_size[1]/2+4, 4*main_wall])
+          translate([-2*main_wall,0,0])
+            rotate([0, 90, 0])
+              cylinder(d=3.5, h=main_wall*3, $fn=20);
   }
 
   %translate([13, -20/2+2, 3*main_wall+4])
@@ -82,6 +88,6 @@ module main_block()
 
 main_block();
 
-%translate([0,0,63.3+5])
+%translate([0,0,63.3+10])
   rotate([180, 0, 0])
     top_cap();
