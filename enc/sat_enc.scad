@@ -63,7 +63,7 @@ module pv_panel_mount()
       %pv_panel_mock();
   }
 
-  translate([5, 0, 0])
+  translate([pv_mount_block_size[0], 0, 0])
     pv_holder();
   // side-foot of panel holder
   module block(size)
@@ -81,7 +81,7 @@ module pv_panel_mount()
         cylinder(r=r, h=y, $fn=60);
   }
   block_size = pv_mount_block_size;
-  translate([0, pv_mount_size[1]/2-block_size[1]/2,0])
+  translate([0, pv_mount_size[1]/2-block_size[1]/2, 0])
     difference()
     {
       block(block_size);
@@ -100,10 +100,19 @@ module pv_panel_mount()
 
 module main_block()
 {
+  module pv_harness()
+  {
+  }
+
   difference()
   {
-    translate([0, 0, main_block_size[2]/2])
-      cube(main_block_size, center=true);
+    union()
+    {
+      translate([0, 0, main_block_size[2]/2])
+        cube(main_block_size, center=true);
+      // TODO: x4
+      pv_harness();
+    }
     translate([0, 0, main_block_size[2]/2])
       translate(main_wall*[0,0,3])
         cube(main_block_size - 2*main_wall*[1,1,0], center=true);
@@ -122,6 +131,7 @@ module main_block()
 
 
 main_block();
+//main_block();
 //%translate([30-wall, 9/2, wall+10/2])
 //  pcb_mock();
 
@@ -129,6 +139,7 @@ main_block();
 //%translate([0, -20, 0])
 //  pv_panel_mock();
 
-translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
+
+%translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
   rotate([180, 0, 0])
     pv_panel_mount();
