@@ -77,7 +77,7 @@ module pv_panel_mount()
       rotate([-90, 0, 0])
         cylinder(r=r, h=y, $fn=60);
   }
-  block_size = [magnet_size[0]+1, magnet_size[1]+2*(0.5/2+1), 10];
+  block_size = [magnet_size[0]+1, magnet_size[1]+2*(0.5/2+1), 7];
   translate([0, pv_mount_size[1]/2-block_size[1]/2,0])
     difference()
     {
@@ -87,7 +87,7 @@ module pv_panel_mount()
         rotate([-90, 0, 0])
           cylinder(d=1.75+0.5, h=pv_mount_size[1]+2*eps, $fn=50);
       // top cut for a magnet
-      translate([0, 1, 10-magnet_size[2]+eps] - eps*[1,0,0])
+      translate([0, 1, block_size[2]-magnet_size[2]+eps] - eps*[1,0,0])
         cube(magnet_size + 0.5*[0,1,0]);
     }
 }
@@ -113,4 +113,6 @@ module main_block()
 //%translate([0, -20, 0])
 //  pv_panel_mock();
 
-pv_panel_mount();
+//translate([main_block_size[0], main_block_size[1]/2, 10])
+//  rotate([180, 0, 0])
+    pv_panel_mount();
