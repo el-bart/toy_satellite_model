@@ -102,12 +102,14 @@ module main_block()
 {
   difference()
   {
-    cube(main_block_size);
-    translate(main_wall*[1,1,3])
-      cube(main_block_size + [0,0,10] - 2*main_wall*[1,1,0]);
+    translate([0, 0, main_block_size[2]/2])
+      cube(main_block_size, center=true);
+    translate([0, 0, main_block_size[2]/2])
+      translate(main_wall*[0,0,3])
+        cube(main_block_size - 2*main_wall*[1,1,0], center=true);
     // magnet holes
     mag_offset = main_block_size[0]/2;
-    translate(mag_offset*[1, 1, 0] - [0,0,eps])
+    translate([0,0,-eps])
       for(rot=[0,90])
         for(dx=[-1,1])
           rotate([0, 0, rot])
@@ -127,6 +129,6 @@ main_block();
 //%translate([0, -20, 0])
 //  pv_panel_mock();
 
-translate([main_block_size[0], pv_mount_size[1]/2 + main_block_size[1]/2, pv_mount_block_size[2]])
+translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
   rotate([180, 0, 0])
     pv_panel_mount();
