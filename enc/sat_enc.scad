@@ -1,3 +1,10 @@
+//
+// TODOs:
+// - add holes for PVs' cables
+// - add top cap with LED hole
+// - add bottom mount for Araine 5 model
+//
+
 eps = 0.01;
 magnet_size = [5,5,1];
 magnet_slot_size = magnet_size + 0.5*[0,1,0] + eps*[0,0,1];
