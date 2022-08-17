@@ -74,5 +74,6 @@ module pv_panel_mount()
     }
 }
 
-// TODO: x4
-pv_panel_mount();
+for(i=[0:3])
+  translate([0, i*(pv_mount_size[1]+2), 0])
+    pv_panel_mount();
