@@ -102,6 +102,29 @@ module main_block()
 {
   module pv_harness()
   {
+    d_int = 1.75 + 0.5;
+    d_ext = pv_mount_block_size[0];
+    block_size = [main_block_size[0]/2 + pv_mount_block_size[0]/2, 0, pv_mount_block_size[2]/2];
+    l = 5;
+    module one_block()
+    {
+      translate([0, -l/2, 0])
+        rotate([-90, 0, 0])
+          cylinder(d=d_ext, h=l, $fn=50);
+      int_block_size = [d_ext/2, l, pv_mount_block_size[2]];
+      translate([-int_block_size[0], -int_block_size[1]/2, -int_block_size[2]/2-1/2])
+        cube(int_block_size);
+    }
+    translate([main_block_size[0]/2 + pv_mount_block_size[0]/2, 0, pv_mount_block_size[2]-3])
+      difference()
+      {
+        for(dy=[-1,1])
+          translate([0, dy*(l + pv_mount_block_size[1] + 2*0.5)/2, 0])
+            one_block(); // TODO: x2
+        translate((pv_mount_size[1]+2*eps)/2*[0,1,0])
+          rotate([90, 0, 0])
+            cylinder(d=d_int, h=pv_mount_size[1], $fn=50);
+      }
   }
 
   difference()
@@ -138,7 +161,6 @@ main_block();
 
 //%translate([0, -20, 0])
 //  pv_panel_mock();
-
 
 %translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
   rotate([180, 0, 0])
