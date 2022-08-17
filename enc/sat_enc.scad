@@ -156,14 +156,10 @@ module main_block()
                 translate(-magnet_slot_size[0]/2 *[1,2,0])
                   cube(magnet_slot_size);
   }
+
+  %translate([13, -20/2, 3*main_wall+4])
+    pcb_mock();
 }
 
 
 main_block();
-//main_block();
-//%translate([30-wall, 9/2, wall+10/2])
-//  pcb_mock();
-
-
-//%translate([0, -20, 0])
-//  pv_panel_mock();
