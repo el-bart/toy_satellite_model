@@ -133,8 +133,14 @@ module main_block()
     {
       translate([0, 0, main_block_size[2]/2])
         cube(main_block_size, center=true);
-      // TODO: x4
-      pv_harness();
+      for(dr=[0:3])
+        rotate(dr*[0,0,90])
+        {
+          pv_harness();
+          %translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
+            rotate([180, 0, 0])
+              pv_panel_mount();
+        }
     }
     translate([0, 0, main_block_size[2]/2])
       translate(main_wall*[0,0,3])
@@ -161,7 +167,3 @@ main_block();
 
 //%translate([0, -20, 0])
 //  pv_panel_mock();
-
-%translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
-  rotate([180, 0, 0])
-    pv_panel_mount();
