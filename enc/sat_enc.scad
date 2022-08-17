@@ -1,4 +1,6 @@
 eps = 0.01;
+magnet_size = [5,5,1];
+magnet_slot_size = magnet_size + 0.5*[0,1,0] + eps*[0,0,1];
 pv_size = [52, 19, 0.4];
 pv_wall_side = 1;
 pv_wall_bottom = 2;
@@ -9,10 +11,10 @@ pv_mount_size = pv_size +
                 2*pv_spacing*[1,1,0] +
                 [0, pv_cable_space, 0] +
                 [0, 0, pv_wall_bottom];
+pv_mount_block_size = [magnet_size[0]+1, magnet_size[1]+2*(0.5/2+1), 7];
 main_block_size = [30, 30, pv_size[0]+10];
 main_wall = 1.3;
-magnet_size = [5,5,1];
-magnet_slot_size = magnet_size + 0.5*[0,1,0] + eps*[0,0,1];
+
 
 module pcb_mock()
 {
@@ -78,7 +80,7 @@ module pv_panel_mount()
       rotate([-90, 0, 0])
         cylinder(r=r, h=y, $fn=60);
   }
-  block_size = [magnet_size[0]+1, magnet_size[1]+2*(0.5/2+1), 7];
+  block_size = pv_mount_block_size;
   translate([0, pv_mount_size[1]/2-block_size[1]/2,0])
     difference()
     {
@@ -118,7 +120,6 @@ module main_block()
 
 
 main_block();
-//
 //%translate([30-wall, 9/2, wall+10/2])
 //  pcb_mock();
 
@@ -126,6 +127,6 @@ main_block();
 //%translate([0, -20, 0])
 //  pv_panel_mock();
 
-translate([main_block_size[0], pv_mount_size[1]/2 + main_block_size[1]/2, 7])
+translate([main_block_size[0], pv_mount_size[1]/2 + main_block_size[1]/2, pv_mount_block_size[2]])
   rotate([180, 0, 0])
     pv_panel_mount();
