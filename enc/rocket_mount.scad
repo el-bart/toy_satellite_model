@@ -32,7 +32,7 @@ module rocket_mount()
   
   module base()
   {
-    cylinder(d=50, h=base_h, $fn=200);
+    cylinder(d=45.5, h=base_h, $fn=200);
   }
   
   difference()
