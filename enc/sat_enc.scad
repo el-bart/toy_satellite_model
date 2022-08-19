@@ -37,7 +37,7 @@ module main_block()
       {
         for(dy=[-1,1])
           translate([0, dy*(l + pv_mount_block_size[1] + 2*0.5)/2, 0])
-            one_block(); // TODO: x2
+            one_block();
         translate((pv_mount_size[1]+2*eps)/2*[0,1,0])
           rotate([90, 0, 0])
             cylinder(d=d_int, h=pv_mount_size[1], $fn=50);
