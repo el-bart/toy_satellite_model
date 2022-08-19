@@ -1,10 +1,7 @@
-//
-// TODOs:
-// - add bottom mount for Araine 5 model
-//
 include <detail/config.scad>
 use <top_cap.scad>
 use <pv_panel_mount.scad>
+use <rocket_mount.scad>
 
 
 module pcb_mock()
@@ -54,9 +51,11 @@ module main_block()
         rotate(dr*[0,0,90])
         {
           pv_harness();
-          %translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
-            rotate([180, 0, 0])
-              pv_panel_mount();
+          translate([0, 0, -6])
+            %translate([main_block_size[0]/2, pv_mount_size[1]/2, pv_mount_block_size[2]])
+              rotate([0, -90, 0])
+                rotate([180, 0, 0])
+                  pv_panel_mount();
         }
     }
     translate([0, 0, main_block_size[2]/2])
@@ -91,3 +90,6 @@ main_block();
 %translate([0,0,63.3+10])
   rotate([180, 0, 0])
     top_cap();
+
+%translate([0, 0, -10])
+  rocket_mount();
