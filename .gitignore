@@ -5,3 +5,6 @@
 # git
 *.orig
 *.rej
+
+# kwrite
+*-swp
