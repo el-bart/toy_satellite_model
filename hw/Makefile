@@ -12,13 +12,17 @@ GERBER_DIR:=$(OUT_DIR)/gerber
 
 
 .PHONY: all
-all: gerber stl
+all: gerber
+all: stl
+all: bom
 
 
 .PHONY: gerber
 gerber: $(GERBER_DIR).tar.gz
 
-$(GERBER_DIR).tar.gz: $(PCB) /usr/local/bin/generate_gerber Makefile
+$(GERBER_DIR).tar.gz: Makefile
+$(GERBER_DIR).tar.gz: /usr/local/bin/generate_gerber
+$(GERBER_DIR).tar.gz: $(PCB)
 	$(SILENT)echo "GERBER $<"
 	$(SILENT)mkdir -p "$(GERBER_DIR)"
 	$(SILENT)generate_gerber "$<" "$(GERBER_DIR)"
@@ -29,10 +33,24 @@ $(GERBER_DIR).tar.gz: $(PCB) /usr/local/bin/generate_gerber Makefile
 .PHONY: stl
 stl: $(OUT_DIR)/pcb.stl
 
-$(OUT_DIR)/pcb.stl: $(PCB) /usr/local/bin/generate_stl /usr/local/bin/step2stl Makefile
+$(OUT_DIR)/pcb.stl: Makefile
+$(OUT_DIR)/pcb.stl: /usr/local/bin/generate_stl
+$(OUT_DIR)/pcb.stl: /usr/local/bin/step2stl
+$(OUT_DIR)/pcb.stl: $(PCB)
 	$(SILENT)echo "STL $<"
 	$(SILENT)mkdir -p "$(OUT_DIR)"
 	$(SILENT)generate_stl "$<" "$@"
+
+
+.PHONY: bom
+bom: $(OUT_DIR)/bom.csv
+
+$(OUT_DIR)/bom.csv: Makefile
+$(OUT_DIR)/bom.csv: /usr/local/bin/generate_bom
+$(OUT_DIR)/bom.csv: $(PCB)
+	$(SILENT)echo "BOM $<"
+	$(SILENT)mkdir -p "$(OUT_DIR)"
+	$(SILENT)generate_bom "$<" "$@"
 
 
 .PHONY: clean
