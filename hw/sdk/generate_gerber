@@ -3,6 +3,10 @@ import os
 import sys
 import pcbnew
 
+if len(sys.argv) != 1+2:
+    sys.stderr.write("{} <my_board.kicad_pcb> </path/to/out/dir>\n".format(sys.argv[0]))
+    sys.exit(2)
+
 board_name = sys.argv[1]
 out_dir = sys.argv[2]
 
