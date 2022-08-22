@@ -57,6 +57,9 @@ in case it shreds to pieces, it will also prevent small and sharp parts from lan
 
 ## version history
 
+### dev
+* cable slot on PV panel changed to fit actual cable route.
+
 ### v1.1
 * PCB holes for PV soldering are now using standard goldpin pitch.
 * added some basic documentation.
