@@ -58,6 +58,7 @@ in case it shreds to pieces, it will also prevent small and sharp parts from lan
 ## version history
 
 ### dev
+* added BOM generator for PCB
 * cable slot on PV panel changed to fit actual cable route.
 
 ### v1.1

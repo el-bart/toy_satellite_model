@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make
 
 COPY \
+  generate_bom \
   generate_gerber \
   generate_stl \
   step2stl \
