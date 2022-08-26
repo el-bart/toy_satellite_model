@@ -19,15 +19,25 @@ all: bom
 
 .PHONY: gerber
 gerber: $(GERBER_DIR).tar.gz
+gerber: $(GERBER_DIR).zip
 
 $(GERBER_DIR).tar.gz: Makefile
-$(GERBER_DIR).tar.gz: /usr/local/bin/generate_gerber
-$(GERBER_DIR).tar.gz: $(PCB)
-	$(SILENT)echo "GERBER $<"
+$(GERBER_DIR).tar.gz: $(GERBER_DIR)/version.txt
+	$(SILENT)echo "GERBER $(GERBER_DIR).tar.gz"
+	$(SILENT)tar czf "$@" $<
+
+$(GERBER_DIR).zip: Makefile
+$(GERBER_DIR).zip: $(GERBER_DIR)/version.txt
+	$(SILENT)echo "GERBER $(GERBER_DIR).zip"
+	$(SILENT)tar czf "$@" $<
+
+$(GERBER_DIR)/version.txt: Makefile
+$(GERBER_DIR)/version.txt: /usr/local/bin/generate_gerber
+$(GERBER_DIR)/version.txt: $(PCB)
+	$(SILENT)echo "GERBER $(GERBER_DIR)"
 	$(SILENT)mkdir -p "$(GERBER_DIR)"
 	$(SILENT)generate_gerber "$<" "$(GERBER_DIR)"
 	$(SILENT)md5sum "$<" > "$(GERBER_DIR)/version.txt"
-	$(SILENT)tar czf "$@" $<
 
 
 .PHONY: stl

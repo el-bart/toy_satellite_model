@@ -58,6 +58,7 @@ in case it shreds to pieces, it will also prevent small and sharp parts from lan
 ## version history
 
 ### dev
+* gerber files are now generated in both `*.tar.gz` and `*.zip` formats
 * added help messages for KiCad generator tools
 * added BOM generator for PCB
 * cable slot on PV panel changed to fit actual cable route.
