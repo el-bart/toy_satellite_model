@@ -24,12 +24,12 @@ gerber: $(GERBER_DIR).zip
 $(GERBER_DIR).tar.gz: Makefile
 $(GERBER_DIR).tar.gz: $(GERBER_DIR)/version.txt
 	$(SILENT)echo "GERBER $(GERBER_DIR).tar.gz"
-	$(SILENT)tar czf "$@" $<
+	$(SILENT)cd "$(dir $@)" && fakeroot tar czf "$(notdir $@)" "gerber/"
 
 $(GERBER_DIR).zip: Makefile
 $(GERBER_DIR).zip: $(GERBER_DIR)/version.txt
 	$(SILENT)echo "GERBER $(GERBER_DIR).zip"
-	$(SILENT)tar czf "$@" $<
+	$(SILENT)cd "$(dir $@)" && fakeroot zip -r -q "$(notdir $@)" "gerber/"
 
 $(GERBER_DIR)/version.txt: Makefile
 $(GERBER_DIR)/version.txt: /usr/local/bin/generate_gerber

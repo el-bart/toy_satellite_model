@@ -7,6 +7,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     fakeroot \
     make
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gzip \
+    tar \
+    zip
 
 COPY \
   generate_bom \
